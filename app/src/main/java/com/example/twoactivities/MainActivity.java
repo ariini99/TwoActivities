@@ -1,60 +1,41 @@
 package com.example.twoactivities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    public static final String EXTRA_MESSAGE = "com.example.TwoActivitiesChallenge.extra.MESSAGE";
+    private Button mButton;
 
-    public static final int TEXT_REQUEST = 1;
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    public static final String EXTRA_MESSAGE = "com.example.twoactivities.extra.MESSAGE";
-    private EditText mMessageEditText;
-    private TextView mReplyHeadTextView;
-    private TextView mReplyTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mMessageEditText = findViewById(R.id.editText_main);
-        mReplyHeadTextView = findViewById(R.id.text_header_reply);
-        mReplyTextView = findViewById(R.id.text_message_reply);
     }
 
-    public void launchSecondActivity(View view) {
-        Log.d(LOG_TAG, "Button clicked!");
+    @Override
+    public void onClick(View view)
+    {
+        String message = "onClick garyo";
         Intent intent = new Intent(this, SecondActivity.class);
-        String message = mMessageEditText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        secondActivityResultLauncher.launch(intent);
-    }
 
-
-    ActivityResultLauncher<Intent> secondActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if (result.getResultCode() == Activity.RESULT_OK) {
-                Intent data = result.getData();
-                String reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
-
-                // Make the reply head visible.
-                mReplyHeadTextView.setVisibility(View.VISIBLE);
-
-                // Set the reply and make it visible.
-                mReplyTextView.setText(reply);
-                mReplyTextView.setVisibility(View.VISIBLE);
-            }
+        switch (view.getId()) {
+            case R.id.text_one:
+                message = getString(R.string.passage_one);
+                break;
+            case R.id.text_two:
+                message = getString(R.string.passage_two);
+                break;
+            case R.id.text_three:
+                message = getString(R.string.passage_three);
+                break;
         }
-    });
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+
+    }
 }

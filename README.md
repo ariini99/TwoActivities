@@ -1,7 +1,5 @@
 # Tasks
 
-**Two-Activities Task**
-![Screenshot](tasks.gif)
+**Two-Activities Coding Challenge**
 
-**Two-Activities Task**
-![Screenshot](taskstwoactgif.gif)
+![Screenshot](codingchallenge.gif)

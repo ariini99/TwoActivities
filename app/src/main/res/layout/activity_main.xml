@@ -4,51 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.twoactivities.MainActivity">
 
-    <TextView
-        android:id="@+id/text_header_reply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/text_header_reply"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textStyle="bold"
+    <Button
+        android:id="@+id/text_one"
+        android:layout_width="177dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="68dp"
+        android:onClick="onClick"
+        android:text="Text One"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_message_reply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_header_reply" />
 
     <Button
-        android:id="@+id/button_main"
-        android:layout_width="91dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="launchSecondActivity"
-        android:text="SEND"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:id="@+id/text_three"
+        android:layout_width="177dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onClick"
+        android:text="Text Three"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_two" />
 
-    <EditText
-        android:id="@+id/editText_main"
-        android:layout_width="254dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="Enter your message here"
-        android:inputType="textLongMessage|textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_main"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/text_two"
+        android:layout_width="177dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onClick"
+        android:text="Text Two"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_one" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
