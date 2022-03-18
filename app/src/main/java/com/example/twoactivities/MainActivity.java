@@ -1,41 +1,43 @@
 package com.example.twoactivities;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    public static final String EXTRA_MESSAGE = "com.example.TwoActivitiesChallenge.extra.MESSAGE";
-    private Button mButton;
 
+public class MainActivity extends AppCompatActivity {
+
+    public static final String EXTRA_MESSAGE ="com.example.HelloToast.extra.MESSAGE";
+    private int mCount = 0;
+    private TextView mShowCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mShowCount = (TextView) findViewById(R.id.show_count);
     }
 
-    @Override
-    public void onClick(View view)
-    {
-        String message = "onClick garyo";
-        Intent intent = new Intent(this, SecondActivity.class);
 
-        switch (view.getId()) {
-            case R.id.text_one:
-                message = getString(R.string.passage_one);
-                break;
-            case R.id.text_two:
-                message = getString(R.string.passage_two);
-                break;
-            case R.id.text_three:
-                message = getString(R.string.passage_three);
-                break;
-        }
+    public void showToast(View view) {
+        Toast toast = Toast.makeText(this, R.string.toast_message, Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void countUp(View view) {
+        mCount++;
+        if (mShowCount != null)
+            mShowCount.setText(Integer.toString(mCount));
+    }
+
+    public void launchSecondActivity(View view) {
+        String message = mShowCount.getText().toString();
+        Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
-
     }
 }

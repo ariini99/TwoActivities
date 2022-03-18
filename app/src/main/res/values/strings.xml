@@ -4,6 +4,7 @@
     <string name="text_header">Message Received</string>
     <string name="button_second">Reply</string>
     <string name="editText_second">Enter Your Reply Here</string>
+    <string name="toast_message">Hello World!!!</string>
     <string name="text_header_reply">Reply Received</string>
 
     <string name="passage_one">
